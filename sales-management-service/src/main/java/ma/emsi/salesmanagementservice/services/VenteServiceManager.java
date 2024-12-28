@@ -5,6 +5,7 @@ import ma.emsi.salesmanagementservice.dao.entities.Vente;
 import ma.emsi.salesmanagementservice.dao.repository.VenteRepository;
 import ma.emsi.salesmanagementservice.dto.VenteDto;
 import ma.emsi.salesmanagementservice.feign.ClientServiceFeign;
+import ma.emsi.salesmanagementservice.feign.ProductServiceFeign;
 import ma.emsi.salesmanagementservice.graph.GraphQLQueryService;
 import ma.emsi.salesmanagementservice.mapper.VenteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,52 +21,24 @@ public class VenteServiceManager implements VenteService{
     VenteRepository venteRepository;
 
     @Autowired
-    GraphQLQueryService graphQLQueryService;
+    ClientServiceFeign clientServiceFeign;
+
+    @Autowired
+    ProductServiceFeign productServiceFeign;
 
     @Autowired
     VenteMapper venteMapper;
 
     @Override
     public VenteDto addVente(VenteDto venteDto) {
-        VenteDto vtDto = null;
-        // Préparer les variables
-        String queryClient =
-                """
-                query($id: Int){
-                    getClientById(id: $id){
-                        id
-                        email
-                        nom
-                    }
-                }""";
-        String queryProd =
-                """
-                query($id: Int){
-                    getProduitById(id: $id){
-                        id
-                        marque
-                        qteStock
-                    }
-                }""";
-        //Map<String, Object> variables = Map.of("id", venteDto.getIdClient());
-
-        // Construire le corps de la requête
-        //Map<String, Object> request = Map.of(
-                //"query", query,
-                //"variables", variables
-        //);
-        //GraphQLQuery graphQLQuery = new GraphQLQuery(query);
-        //Map<String, Object> response = graphQLQueryService.getClientById(request);
-        //Map<String, Object> data = (Map<String, Object>) response.get("data");
-        //Map<String, Object> getClientById = (Map<String, Object>) data.get("getClientById");
-        System.out.println("Teste ID Prod 1 : " + venteDto.getProduitId());
-        System.out.println("Teste ID client 1 : " + venteDto.getIdClient());
-        if(graphQLQueryService.getSClientId(queryClient,venteDto.getIdClient())!=null
-                && graphQLQueryService.getSProduitId(queryProd,venteDto.getProduitId())!=null){
-            vtDto = venteMapper.fromVenteToVenteDto(
-                    venteRepository.save(venteMapper.fromVenteDtoToVente(venteDto)));
+        if(venteDto.getIdClient().equals(clientServiceFeign.getClientById(venteDto.getIdClient()))&&venteDto.getProduitId().equals(productServiceFeign.getProductById(venteDto.getProduitId()))){
+            VenteDto vteDto = venteMapper.fromVenteToVenteDto(venteRepository.save(venteMapper.fromVenteDtoToVente(venteDto)));
+            return vteDto;
+        }else {
+           System.out.println("client Id ou Product Id introuvable");
         }
-        return vtDto;
+        return venteDto;
+
     }
 
     @Override

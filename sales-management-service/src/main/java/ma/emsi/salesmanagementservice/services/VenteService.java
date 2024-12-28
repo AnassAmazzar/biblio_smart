@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface VenteService {
     VenteDto addVente(VenteDto venteDto);
-    VenteDto getVenteById(Long id);
+    VenteDto getVenteById(Long clientId, Long produitId);
     VenteDto updateVente(VenteDto produitDto);
-    VenteDto deleteVente(Long id);
+    VenteDto deleteVente(Long clienId, Long produitId);
     List<VenteDto> getListVenteDto();
 }

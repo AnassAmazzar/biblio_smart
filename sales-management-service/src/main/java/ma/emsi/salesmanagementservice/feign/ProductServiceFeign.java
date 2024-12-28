@@ -11,7 +11,10 @@ public interface ProductServiceFeign {
     @PostMapping
     Map<String, Object> getQentiter(@RequestBody Map<String, Object> request_qt);
 
+   // @PostMapping
+    //Map<String, Object> getProductById(@RequestBody Map<String, Object> request_prod);
+
     @PostMapping
-    Map<String, Object> getProductById(@RequestBody Map<String, Object> request_prod);
+    Map<String, Object> getProductById(@RequestBody Long requestProduitId);
 
 }
