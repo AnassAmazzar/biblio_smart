@@ -1,0 +1,7 @@
+type Vente{
+    id : ID,
+    idClient : Int,
+    produitId : Int,
+    dateVente : String,
+    quantitie : Int
+}

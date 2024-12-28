@@ -1,0 +1,8 @@
+input ClientDto{
+    id: ID,
+    nom: String,
+    prenom: String,
+    telephone: String,
+    email: String,
+    password: String
+}

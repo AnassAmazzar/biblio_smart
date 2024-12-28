@@ -1,0 +1,7 @@
+type Produit{
+    id: ID,
+    nom: String,
+    marque: String,
+    prix: Float,
+    qteStock: Int
+}

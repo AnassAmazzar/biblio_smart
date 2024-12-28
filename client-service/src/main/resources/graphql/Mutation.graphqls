@@ -1,0 +1,6 @@
+type Mutation{
+    #Client
+    addClient(clientDto : ClientDto) : Client
+    updateClient(clientDto : ClientDto) : Client
+    deleteClientById(id : ID) : Boolean
+}

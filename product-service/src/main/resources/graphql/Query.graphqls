@@ -1,0 +1,4 @@
+type Query{
+    getProductById(id: Int) : Produit,
+    getAllProduct : [Produit]
+}
