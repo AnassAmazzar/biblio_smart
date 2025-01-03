@@ -15,6 +15,6 @@ public interface ProductServiceFeign {
     //Map<String, Object> getProductById(@RequestBody Map<String, Object> request_prod);
 
     @PostMapping
-    Map<String, Object> getProductById(@RequestBody Long requestProduitId);
+    Long getProductById(@RequestBody Long requestProduitId);
 
 }

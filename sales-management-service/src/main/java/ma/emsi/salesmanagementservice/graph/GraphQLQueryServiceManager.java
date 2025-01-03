@@ -1,4 +1,4 @@
-package ma.emsi.salesmanagementservice.graph;
+/* package ma.emsi.salesmanagementservice.graph;
 
 
 import ma.emsi.salesmanagementservice.feign.ClientServiceFeign;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class GraphQLQueryServiceManager implements GraphQLQueryService {
+public class GraphQLQueryServiceManager {
 
     @Autowired
     ClientServiceFeign clientServiceFeign;
@@ -17,7 +17,7 @@ public class GraphQLQueryServiceManager implements GraphQLQueryService {
     @Autowired
     ProductServiceFeign productServiceFeign;
 
-    @Override
+   @Override
     public Object getSClientId(String query, Long id) {
         Map<String, Object> response = clientServiceFeign.getClientById(queryFunction(Map.of("id", id), query));
         Map<String, Object> data = (Map<String, Object>) response.get("data");
@@ -48,7 +48,7 @@ public class GraphQLQueryServiceManager implements GraphQLQueryService {
     }
 }
 
-/*
+
 Map<String, Object> variables = Map.of("id", id);
 
         // Construire le corps de la requête
@@ -56,4 +56,4 @@ Map<String, Object> variables = Map.of("id", id);
                 "query", query,
                 "variables", variables
         );
- */
+} */

@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Setter
 public class VenteDto {
     private Long idClient;
-    private Long produitId;
+    private Long idProduit;
     private LocalDate dateVente;
     private int quantitie;
 }

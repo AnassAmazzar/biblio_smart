@@ -1,6 +1,6 @@
 input VenteDto {
     idClient : Int,
-    produitId : Int,
+    idProduit : Int,
     dateVente : String,
     quantitie : Int
 }

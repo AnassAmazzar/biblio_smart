@@ -1,15 +1,13 @@
 package ma.emsi.salesmanagementservice.dao.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 
 @Data
 @Entity
+@Table(name = "Vente")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -18,7 +16,7 @@ public class Vente {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long idClient;
-    private Long produitId;
+    private Long idProduit;
     private LocalDate dateVente;
     private int quantitie;
 }

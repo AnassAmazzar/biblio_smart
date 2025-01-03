@@ -1,0 +1,4 @@
+type Query{
+    getVenteById(idC: Int, idP: Int) : Vente,
+    getListVente : [Vente]
+}
