@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Transactional
 public interface VenteRepository extends JpaRepository<Vente, Long> {
-
 }

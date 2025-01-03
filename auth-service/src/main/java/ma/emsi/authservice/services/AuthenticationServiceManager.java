@@ -9,6 +9,8 @@ import ma.emsi.authservice.dao.repository.UserRepository;
 import ma.emsi.authservice.dto.AuthenticationRequest;
 import ma.emsi.authservice.dto.AuthenticationResponse;
 import ma.emsi.authservice.dto.RegisterRequest;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,7 @@ public class AuthenticationServiceManager implements AuthenticationService{
 
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
     @Override
     public AuthenticationResponse inscription(RegisterRequest registerRequest) {
@@ -39,6 +42,16 @@ public class AuthenticationServiceManager implements AuthenticationService{
 
     @Override
     public AuthenticationResponse connexion(AuthenticationRequest authenticationRequest) {
-        return null;
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        authenticationRequest.getEmail(),
+                        authenticationRequest.getPassword()
+                )
+        );
+        var user = userRepository.findByEmail(authenticationRequest.getEmail())
+                .orElseThrow();
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken).build();
     }
 }

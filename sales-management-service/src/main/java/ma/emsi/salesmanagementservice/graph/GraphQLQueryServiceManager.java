@@ -31,10 +31,11 @@ public class GraphQLQueryServiceManager implements GraphQLQueryService {
     public Object getSProduitId(String query, Long id) {
         System.out.println("Id Prod : " + id);
         Map<String, Object> response = productServiceFeign.getProductById(queryFunction(Map.of("id", id), query));
+        System.out.println(response.get("data"));
         Map<String, Object> data = (Map<String, Object>) response.get("data");
-        System.out.println("Prod getProductById data : " + data.get("getProduitById"));
-        System.out.println("Prod data : " + data);
-        Map<String, Object> getProductById = (Map<String, Object>) data.get("getProduitById");
+        //System.out.println("Prod getProductById data : " + data.get("getProduitById"));
+        //System.out.println("Prod data : " + data);
+        Map<String, Object> getProductById = (Map<String, Object>) data.get("getProductById");
         System.out.println("Prod getProductById 2 : " + getProductById.get("id"));
         return getProductById.get("id");
     }

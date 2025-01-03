@@ -15,12 +15,8 @@ public class VenteController {
     VenteService venteService;
 
     @MutationMapping
-    public VenteDto addProduit(@Argument VenteDto venteDto){
-        return venteService.addVente(venteDto);
-    }
+    public VenteDto addVente(@Argument VenteDto venteDto){return venteService.addVente(venteDto);}
 
-    @QueryMapping
-    public VenteDto getVenteById(@Argument Long id){
-        return venteService.getVenteById(id);
-    }
+    //@QueryMapping
+    //public VenteDto getVenteById(@Argument Long id){return venteService.getVenteById(id);}
 }

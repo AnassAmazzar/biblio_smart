@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Map;
 
-@FeignClient(name = "client-service", url = "http://localhost:8090/graphql")
+@FeignClient(name = "client-service", url = "http://localhost:8090/client/graphql")
 public interface ClientServiceFeign {
     //@PostMapping()
     //consumes = MediaType.APPLICATION_JSON_VALUE

@@ -41,7 +41,7 @@ public class VenteServiceManager implements VenteService{
         String queryProd =
                 """
                 query($id: Int){
-                    getProduitById(id: $id){
+                    getProductById(id: $id){
                         id
                         marque
                         qteStock

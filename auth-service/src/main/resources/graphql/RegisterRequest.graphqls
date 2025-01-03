@@ -1,0 +1,7 @@
+input RegisterRequest {
+    nom: String
+    prenom: String
+    telephone: String
+    email: String
+    password: String
+}
