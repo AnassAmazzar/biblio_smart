@@ -4,4 +4,5 @@ input RegisterRequest {
     telephone: String
     email: String
     password: String
+    role: String
 }

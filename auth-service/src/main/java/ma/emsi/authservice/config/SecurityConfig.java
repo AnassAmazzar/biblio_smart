@@ -23,7 +23,7 @@ public class SecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {
             "/graphiql/**",
-            "/graphql/**",
+            "/auth/graphql/**",
             "/h2-console/**"
     };
 
