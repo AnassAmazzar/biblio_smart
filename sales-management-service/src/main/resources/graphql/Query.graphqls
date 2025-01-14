@@ -1,3 +1,4 @@
 type Query {
-    test(ventedto: VenteDto): Vente
+    getVenteById(idClient: Int, idProduit:Int): Vente
+    getListVente : [Vente]
 }

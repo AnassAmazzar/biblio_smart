@@ -21,7 +21,6 @@ public class Vente {
     private Long idClient;
     private Long produitId;
     private String email;
-    //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateVente;
     private int quantitie;
 }

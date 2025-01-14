@@ -26,6 +26,17 @@ public class ProduitServiceManager implements ProduitService{
     }
 
     @Override
+    public ProduitDto updateQuantite(Integer id, Integer quantite) {
+        Produit produit = produitRepository.findById(id).get();
+        System.out.println(quantite);
+        produit.setQteStock(quantite);
+        produit = produitRepository.save(produit);
+
+        return produitMapper.fromProduitToProduitDto(produit);
+    }
+
+
+    @Override
     public ProduitDto getProduitById(Integer id) {
         Produit produit = produitRepository.findById(id).get();
         ProduitDto produitDto = produitMapper.fromProduitToProduitDto(produit);

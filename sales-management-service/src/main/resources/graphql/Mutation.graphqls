@@ -1,3 +1,6 @@
 type Mutation {
     addVente(venteDto : VenteDto) : Vente
+    deleteVenteById(id : ID) : Boolean
+
+    updateVente(venteDto : VenteDto) : Vente
 }

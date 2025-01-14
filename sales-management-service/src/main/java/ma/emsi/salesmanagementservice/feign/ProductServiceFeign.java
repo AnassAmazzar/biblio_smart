@@ -13,5 +13,9 @@ public interface ProductServiceFeign {
 
     @PostMapping
     Map<String, Object> getProductById(@RequestBody Map<String, Object> request_prod);
+    @PostMapping
+    Map<String, Object> updateProductQuantity(@RequestBody Map<String, Object> request_prod);
+
+
 
 }

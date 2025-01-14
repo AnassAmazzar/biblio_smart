@@ -40,6 +40,25 @@ public class GraphQLQueryServiceManager implements GraphQLQueryService {
         return getProductById.get("id");
     }
 
+    @Override
+    public Object getQentiter(String query, Long id) {
+        System.out.println("Id Prod : " + id);
+        Map<String, Object> response = productServiceFeign.getProductById(queryFunction(Map.of("id", id), query));
+        System.out.println(response.get("data"));
+        Map<String, Object> data = (Map<String, Object>) response.get("data");
+        Map<String, Object> getProductById = (Map<String, Object>) data.get("getProductById");
+        System.out.println("Prod getProductById 2 : " + getProductById.get("qteStock"));
+        return getProductById.get("qteStock");
+    }
+
+    @Override
+    public Object updateQuantite(String query, Long id) {
+        System.out.println(id);
+        Map<String, Object> response = productServiceFeign.updateProductQuantity(queryFunction(Map.of("id", id), query));
+        System.out.println(response);
+        return null;
+    }
+
     private Map<String, Object> queryFunction(Map<String, Object> variables, String q){
         Map<String, Object> request = Map.of(
                 "query", q,

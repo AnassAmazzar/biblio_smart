@@ -43,5 +43,11 @@ public class ProduitController {
         return produitService.getListProduitDto();
     }
 
+    @MutationMapping
+    public ProduitDto updateQuantite(@Argument Integer id, @Argument Integer quantite){
+        return produitService.updateQuantite(id,quantite);
+
+    }
+
 
 }
