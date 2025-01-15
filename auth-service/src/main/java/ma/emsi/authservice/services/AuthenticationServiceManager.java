@@ -32,7 +32,7 @@ public class AuthenticationServiceManager implements AuthenticationService{
                 .telephone(registerRequest.getTelephone())
                 .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
-                .role(Role.User)
+                .role(registerRequest.getRole())
                 .build();
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
@@ -51,7 +51,8 @@ public class AuthenticationServiceManager implements AuthenticationService{
         var user = userRepository.findByEmail(authenticationRequest.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
+        var roleUser = user.getRole();
         return AuthenticationResponse.builder()
-                .token(jwtToken).build();
+                .token(jwtToken).role(roleUser).build();
     }
 }

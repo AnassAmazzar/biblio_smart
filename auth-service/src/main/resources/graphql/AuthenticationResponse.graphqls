@@ -1,3 +1,4 @@
 type AuthenticationResponse {
     token: String
+    role: String
 }
