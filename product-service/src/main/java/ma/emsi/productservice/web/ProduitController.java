@@ -44,8 +44,8 @@ public class ProduitController {
     }
 
     @MutationMapping
-    public ProduitDto updateQuantite(@Argument Integer id, @Argument Integer quantite){
-        return produitService.updateQuantite(id,quantite);
+    public ProduitDto updateProductByQuantity(@Argument Integer id, @Argument Integer quantite){
+        return produitService.updateProductByQuantity(id,quantite);
 
     }
 

@@ -17,10 +17,10 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="api-gateway" options="-parameters" />
-      <module name="auth-service" options="-parameters" />
-      <module name="client-service" options="-parameters" />
-      <module name="product-service" options="-parameters" />
+      <module name="api-gateway" options="" />
+      <module name="auth-service" options="" />
+      <module name="client-service" options="" />
+      <module name="product-service" options="" />
       <module name="sales-management-service" options="-parameters" />
     </option>
   </component>

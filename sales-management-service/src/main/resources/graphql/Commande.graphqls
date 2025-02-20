@@ -1,0 +1,7 @@
+type Commande{
+      id : ID,
+    customerId : Int,
+    sales : [Vente],
+   validationDate : String,
+    status : String
+}

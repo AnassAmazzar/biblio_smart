@@ -11,7 +11,9 @@ import java.util.List;
 public interface VenteRepository extends JpaRepository<Vente, Long> {
 
     Vente findVenteByIdClientAndProduitId(Long produitId, Long idClient);
-    List<Vente> findVenteByIdClient(Long idClient);
+    List<Vente> findVenteByIdClientAndValid(Long idClient, boolean valid);
+    List<Vente> findVenteByIdClientAndId(Long idClient, Long id);
+
 
     //Vente deleteVenteBy
 }

@@ -3,4 +3,5 @@ type Mutation {
     deleteVenteById(id : ID) : Boolean
 
     updateVente(venteDto : VenteDto) : Vente
+    validateVente(idClient : Int) : Commande
 }

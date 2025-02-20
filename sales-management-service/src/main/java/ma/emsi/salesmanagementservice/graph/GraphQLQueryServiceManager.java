@@ -6,6 +6,7 @@ import ma.emsi.salesmanagementservice.feign.ProductServiceFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -52,11 +53,12 @@ public class GraphQLQueryServiceManager implements GraphQLQueryService {
     }
 
     @Override
-    public Object updateQuantite(String query, Long id) {
-        System.out.println(id);
-        Map<String, Object> response = productServiceFeign.updateProductQuantity(queryFunction(Map.of("id", id), query));
-        System.out.println(response);
-        return null;
+    public Object executeMutation(String mutation, Map<String, Object> variables) {
+        Map<String, Object> request = new HashMap<>();
+        request.put("query", mutation);
+        request.put("variables", variables);
+
+        return productServiceFeign.updateProductByQuantity(request);
     }
 
     private Map<String, Object> queryFunction(Map<String, Object> variables, String q){

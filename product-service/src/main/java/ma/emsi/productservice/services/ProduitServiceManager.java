@@ -26,10 +26,15 @@ public class ProduitServiceManager implements ProduitService{
     }
 
     @Override
-    public ProduitDto updateQuantite(Integer id, Integer quantite) {
-        Produit produit = produitRepository.findById(id).get();
+    public ProduitDto updateProductByQuantity(Integer id, Integer quantite) {
+        Produit produit = produitRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found"));
+
+        if (produit.getQteStock() < quantite) {
+            throw new IllegalArgumentException("Insufficient stock for product ID: " + id);
+        }
         System.out.println(quantite);
-        produit.setQteStock(quantite);
+        produit.setQteStock(produit.getQteStock() - quantite);
         produit = produitRepository.save(produit);
 
         return produitMapper.fromProduitToProduitDto(produit);

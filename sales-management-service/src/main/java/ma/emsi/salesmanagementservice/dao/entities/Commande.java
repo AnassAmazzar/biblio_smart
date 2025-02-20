@@ -19,7 +19,7 @@ public class Commande {
 
     private Long customerId; // Reference to the customer
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER,mappedBy ="commande")
     private List<Vente> sales; // Items in the order
 
     private LocalDateTime validationDate;
@@ -27,5 +27,6 @@ public class Commande {
     private String status; // Example: "VALIDATED", "SHIPPED", "DELIVERED"
 
     // Getters and setters
+
 }
 

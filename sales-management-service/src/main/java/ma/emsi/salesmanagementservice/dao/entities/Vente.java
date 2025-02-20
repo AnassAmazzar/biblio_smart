@@ -1,9 +1,6 @@
 package ma.emsi.salesmanagementservice.dao.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,4 +20,8 @@ public class Vente {
     private String email;
     private LocalDate dateVente;
     private int quantitie;
+    private boolean valid;
+    @ManyToOne
+    @JoinColumn(name = "commande_id")
+    private Commande commande;
 }

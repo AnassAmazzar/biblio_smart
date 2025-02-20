@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProduitService {
     ProduitDto addproduit(ProduitDto produitDto);
-    ProduitDto updateQuantite(Integer id, Integer quantite);
+    ProduitDto updateProductByQuantity(Integer id, Integer quantite);
 
     ProduitDto getProduitById(Integer id);
     ProduitDto updateProduit(ProduitDto produitDto);
