@@ -48,11 +48,12 @@ public class AuthenticationServiceManager implements AuthenticationService{
                         authenticationRequest.getPassword()
                 )
         );
-        var user = userRepository.findByEmail(authenticationRequest.getEmail())
+        var userProfile = userRepository.findByEmail(authenticationRequest.getEmail())
                 .orElseThrow();
-        var jwtToken = jwtService.generateToken(user);
-        var roleUser = user.getRole();
+        var jwtToken = jwtService.generateToken(userProfile);
+        var roleUser = userProfile.getRole();
         return AuthenticationResponse.builder()
+                .user(userProfile)
                 .token(jwtToken).role(roleUser).build();
     }
 }

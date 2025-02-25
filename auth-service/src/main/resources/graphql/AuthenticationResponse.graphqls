@@ -1,4 +1,5 @@
 type AuthenticationResponse {
+    user: UserProfile
     token: String
     role: String
 }

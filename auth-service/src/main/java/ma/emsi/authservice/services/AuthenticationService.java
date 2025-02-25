@@ -8,4 +8,5 @@ import ma.emsi.authservice.dto.RegisterRequest;
 public interface AuthenticationService {
     AuthenticationResponse inscription(RegisterRequest registerRequest);
     AuthenticationResponse connexion(AuthenticationRequest authenticationRequest);
+
 }

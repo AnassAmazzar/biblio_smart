@@ -23,7 +23,7 @@ public class AuthenticationController {
     }
 
     @QueryMapping
-    public AuthenticationResponse login(@Argument AuthenticationRequest authenticationRequest){
+    public AuthenticationResponse login(@Argument AuthenticationRequest authenticationRequest) {
         return authenticationService.connexion(authenticationRequest);
     }
 
